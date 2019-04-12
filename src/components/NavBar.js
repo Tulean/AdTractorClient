@@ -24,6 +24,10 @@ const styles = (theme) => ({
   },
   fab: {
     marginLeft: 0
+  },
+  adtractList: {
+    padding: '1vw',
+    textDecoration: 'none'
   }
 });
 
@@ -71,6 +75,15 @@ export class NavBar extends Component {
                 AdTractor
               </Typography>
               <div className={classes.grow} />
+              <Typography
+                className={classes.adtractList}
+                variant="h6"
+                color="inherit"
+                component={Link}
+                to="/listing"
+              >
+                Listings
+              </Typography>
               <Fab
                 href="/create"
                 variant="extended"

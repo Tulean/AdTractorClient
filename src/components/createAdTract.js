@@ -42,7 +42,7 @@ if (window.web3) {
   web3 = new Web3(window.web3.currentProvider);
 }
 
-export class createAdTract extends Component {
+class CreateAdtract extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -187,4 +187,4 @@ export class createAdTract extends Component {
   }
 }
 
-export default withStyles(styles)(createAdTract);
+export default withStyles(styles)(CreateAdtract);
