@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
 import Web3 from 'web3';
 
 let web3;
@@ -98,6 +104,23 @@ const ADTRACT_ABI = [
   }
 ];
 
+const styles = (theme) => ({
+  card: {
+    minWidth: 275
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)'
+  },
+  title: {
+    fontSize: 14
+  },
+  pos: {
+    marginBottom: 12
+  }
+});
+
 class RenderAdtract extends Component {
   constructor(props) {
     super(props);
@@ -105,7 +128,7 @@ class RenderAdtract extends Component {
       description: 'loading...',
       url: 'loading...',
       title: 'loading...',
-      address: 'loading...'
+      address: this.props.address
     };
     this._isMounted = false;
   }
@@ -123,13 +146,28 @@ class RenderAdtract extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <div>
-        Title: {this.state.title} Description: {this.state.description}, URL:{' '}
-        {this.state.url}
-      </div>
+      <Card className={classes.card}>
+        <CardContent>
+          <Typography
+            className={classes.title}
+            color="textSecondary"
+            gutterBottom
+          >
+            {this.state.address}
+          </Typography>
+          <Typography variant="h5" component="h2">
+            {this.state.title}
+          </Typography>
+          <Typography component="p">{this.state.description}</Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small">Learn More</Button>
+        </CardActions>
+      </Card>
     );
   }
 }
 
-export default RenderAdtract;
+export default withStyles(styles)(RenderAdtract);

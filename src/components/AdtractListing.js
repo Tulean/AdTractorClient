@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Web3 from 'web3';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import ListSubheader from '@material-ui/core/ListSubheader';
 import RenderAdtract from './RenderAdtract';
+import { withStyles } from '@material-ui/core';
 
 let web3;
 
@@ -76,6 +80,20 @@ const adtractorContract = new web3.eth.Contract(
   ADTRACTOR_ADDRESS
 );
 
+const styles = (theme) => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'visible',
+    backgroundColor: theme.palette.background.paper
+  },
+  gridList: {
+    height: 'auto',
+    width: 'auto'
+  }
+});
+
 class AdtractListing extends Component {
   constructor(props) {
     super(props);
@@ -120,6 +138,7 @@ class AdtractListing extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     if (!window.web3) {
       return <div>Please make sure to install Metamask</div>;
     }
@@ -127,20 +146,35 @@ class AdtractListing extends Component {
       return <div>Please log in into Metamask</div>;
     }
     if (this.state.adtracts) {
-      const adtractsRender = this.state.adtracts.map((adtract) => {
-        return (
-          <div key={adtract}>
-            {adtract}
-            <RenderAdtract address={adtract} />
-            <div />
-          </div>
-        );
-      });
-      return adtractsRender;
+      return (
+        <div className={classes.root}>
+          <GridList cellHeight={180} className={classes.gridList}>
+            <GridListTile
+              key="Subheader"
+              cols={2}
+              style={{ height: 'auto', textAlign: 'center' }}
+            >
+              <ListSubheader
+                component="div"
+                style={{ color: 'black', fontSize: '2em' }}
+              >
+                List of Adtracts
+              </ListSubheader>
+            </GridListTile>
+            {this.state.adtracts.map((adtract) => {
+              return (
+                <GridListTile key={adtract}>
+                  <RenderAdtract address={adtract} />
+                </GridListTile>
+              );
+            })}
+          </GridList>
+        </div>
+      );
     } else {
       return <div>loading...</div>;
     }
   }
 }
 
-export default AdtractListing;
+export default withStyles(styles)(AdtractListing);

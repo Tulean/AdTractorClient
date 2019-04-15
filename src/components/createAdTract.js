@@ -8,6 +8,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import SendIcon from '@material-ui/icons/Send';
 import Chip from '@material-ui/core/Chip';
 import Web3 from 'web3';
+import { Link } from 'react-router-dom';
 
 const styles = (theme) => ({
   container: {
@@ -42,15 +43,84 @@ if (window.web3) {
   web3 = new Web3(window.web3.currentProvider);
 }
 
+const ADTRACTOR_ADDRESS = '0x8D5334727d81CC2EF3b3e8d3623769C2F2aA4A9d';
+const ADTRACTOR_ABI = [
+  {
+    constant: false,
+    inputs: [
+      {
+        name: 'percentageReward',
+        type: 'uint256'
+      },
+      {
+        name: 'description',
+        type: 'string'
+      },
+      {
+        name: 'url',
+        type: 'string'
+      },
+      {
+        name: 'title',
+        type: 'string'
+      }
+    ],
+    name: 'newAdTract',
+    outputs: [],
+    payable: false,
+    stateMutability: 'nonpayable',
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [
+      {
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    name: 'adtracts',
+    outputs: [
+      {
+        name: '',
+        type: 'address'
+      }
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function'
+  },
+  {
+    constant: true,
+    inputs: [],
+    name: 'contractsCount',
+    outputs: [
+      {
+        name: '',
+        type: 'uint256'
+      }
+    ],
+    payable: false,
+    stateMutability: 'view',
+    type: 'function'
+  }
+];
+
+const adtractorContract = new web3.eth.Contract(
+  ADTRACTOR_ABI,
+  ADTRACTOR_ADDRESS
+);
+
 class CreateAdtract extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: '',
       description: '',
-      percentage: '',
+      percentage: 0,
       URL: '',
-      account: ['loading...']
+      account: ['loading...'],
+      deployed: false
     };
     this._isMounted = false;
   }
@@ -58,7 +128,7 @@ class CreateAdtract extends Component {
   getAccounts = async () => {
     try {
       const acc = await web3.eth.getAccounts();
-      if (this._isMounted) this.setState({ account: acc });
+      if (this._isMounted) this.setState({ account: acc[0] });
     } catch (err) {
       console.log(err);
     }
@@ -83,14 +153,71 @@ class CreateAdtract extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const { description, title, percentage, URL } = this.state;
+    adtractorContract.methods
+      .newAdTract(percentage, description, URL, title)
+      .send({ from: this.state.account })
+      .then(this.deployed());
+  };
+
+  deployed = () => {
+    this.setState({
+      title: '',
+      description: '',
+      percentage: 0,
+      URL: '',
+      deployed: true
+    });
+  };
+
+  createAnotherContract = () => {
+    this.setState({ deployed: false });
   };
 
   render() {
     const { classes } = this.props;
+    if (this.state.deployed) {
+      return (
+        <Grid
+          container
+          justify="center"
+          alignItems="center"
+          direction="column"
+          spacing={24}
+        >
+          <Grid item xs={12}>
+            <div>Do you want to create another contract?</div>
+          </Grid>
+          <Grid item xs={6}>
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+              component={Link}
+              to="/"
+            >
+              No
+              <DeleteIcon className={classes.rightIcon} />
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+              onClick={this.createAnotherContract}
+            >
+              Yes
+              <SendIcon className={classes.rightIcon} />
+            </Button>
+          </Grid>
+        </Grid>
+      );
+    }
     return (
       <div>
         <Chip
-          label={`Current Account: ${this.state.account[0]}`}
+          label={`Current Account: ${this.state.account}`}
           className={classes.chip}
         />
         <form
@@ -122,8 +249,8 @@ class CreateAdtract extends Component {
                   id="standard-url"
                   label="URL (Optional)"
                   className={classes.textField}
-                  onChange={this.handleChange('url')}
-                  value={this.state.url}
+                  onChange={this.handleChange('URL')}
+                  value={this.state.URL}
                   margin="normal"
                 />
               </Grid>
@@ -145,7 +272,7 @@ class CreateAdtract extends Component {
                   onChange={this.handleChange('percentage')}
                   type="number"
                   className={classes.textField}
-                  inputProps={{ step: '0.01' }}
+                  inputProps={{ step: '1' }}
                   margin="normal"
                 />
               </Grid>
