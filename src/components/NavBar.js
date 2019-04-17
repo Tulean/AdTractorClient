@@ -3,31 +3,55 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 import { Link } from 'react-router-dom';
 import Web3 from 'web3';
 
 const styles = (theme) => ({
   root: {
-    width: '100%'
+    width: '100%',
+    padding: '0'
   },
   navigation: {
-    backgroundColor: 'black',
-    padding: '1vh'
+    backgroundColor: 'white',
+    color: 'black',
+    [theme.breakpoints.down('630px')]: {
+      display: 'flex',
+      flexDirection: 'column'
+    }
   },
   grow: {
     flexGrow: 1
   },
   title: {
-    textDecoration: 'none'
+    textDecoration: 'none',
+    fontWeight: '700',
+    fontSize: '1.25em',
+    letterSpacing: '3px',
+    fontFamily: '"Montserrat", Arial, Helvetica, sans-serif'
   },
-  fab: {
-    marginLeft: 0
-  },
-  adtractList: {
+  navTabs: {
     padding: '1vw',
-    textDecoration: 'none'
+    textDecoration: 'none',
+    fontFamily: '"Montserrat", Arial, Helvetica, sans-serif'
+  },
+  '@keyframes float': {
+    '0% ': {
+      transform: 'translatey(0px)'
+    },
+    '50%': {
+      transform: 'translatey(-10px)'
+    },
+    '100%': {
+      transform: ' translatey(0px)'
+    }
+  },
+  icon: {
+    overflow: 'hidden',
+    transform: 'translatey(0px)',
+    animation: 'float 5s ease-in-out infinite',
+    height: '40px',
+    width: '40px',
+    display: 'block'
   }
 });
 
@@ -58,65 +82,75 @@ export class NavBar extends Component {
     this.getAccounts();
   }
 
-  render() {
-    const { classes } = this.props;
+  isLoggedIn = (props) => {
+    const { classes } = props;
     if (window.web3 && this.state.accounts.length > 0) {
       return (
-        <div className={classes.root}>
-          <AppBar position="static" className={classes.navigation}>
-            <Toolbar>
-              <Typography
-                className={classes.title}
-                variant="h6"
-                color="inherit"
-                component={Link}
-                to="/"
-              >
-                AdTractor
-              </Typography>
-              <div className={classes.grow} />
-              <Typography
-                className={classes.adtractList}
-                variant="h6"
-                color="inherit"
-                component={Link}
-                to="/listing"
-              >
-                Listings
-              </Typography>
-              <Fab
-                href="/create"
-                variant="extended"
-                aria-label="Create"
-                className={classes.fab}
-              >
-                <AddIcon />
-                Create AdTract
-              </Fab>
-            </Toolbar>
-          </AppBar>
-        </div>
-      );
-    } else {
-      return (
-        <div className={classes.root}>
-          <AppBar position="static" className={classes.navigation}>
-            <Toolbar>
-              <Typography
-                className={classes.title}
-                variant="h6"
-                color="inherit"
-                component={Link}
-                to="/"
-              >
-                AdTractor
-              </Typography>
-              <div className={classes.grow} />
-            </Toolbar>
-          </AppBar>
-        </div>
+        <React.Fragment>
+          <Typography
+            className={classes.navTabs}
+            variant="h6"
+            color="inherit"
+            component={Link}
+            to="/listing"
+          >
+            Listings
+          </Typography>
+          <Typography
+            className={classes.navTabs}
+            variant="h6"
+            color="inherit"
+            component={Link}
+            to="/create"
+          >
+            Create AdTract
+          </Typography>
+        </React.Fragment>
       );
     }
+  };
+
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <div className={classes.root}>
+        <AppBar position="static" className={classes.navigation}>
+          <Toolbar>
+            <img src="./pictures/ethIcon.png" className={classes.icon} />
+            <Typography
+              className={classes.title}
+              variant="h6"
+              color="inherit"
+              component={Link}
+              to="/"
+            >
+              ADTRACTOR
+            </Typography>
+            <div className={classes.grow} />
+            <Typography
+              className={classes.navTabs}
+              variant="h6"
+              color="inherit"
+              component={Link}
+              to="/"
+            >
+              Home
+            </Typography>
+            {this.isLoggedIn(this.props)}
+            <Typography
+              className={classes.navTabs}
+              variant="h6"
+              color="inherit"
+              component={Link}
+              to="/create"
+            >
+              About Us
+            </Typography>
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
   }
 }
 
