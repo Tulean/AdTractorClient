@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import NavBar from './components/NavBar';
+import NavBar from './components/NavBar/NavBar';
 import { BrowserRouter, Route } from 'react-router-dom';
 import CreateAdtract from './components/CreateAdtract';
 import Home from './components/Home';
-import Listing from './components/AdtractListing';
+import Listing from './components/AdtractListing/AdtractListing';
 import AboutUs from './components/AboutUs';
 
 export class App extends Component {
