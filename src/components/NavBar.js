@@ -6,7 +6,9 @@ import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import Web3 from 'web3';
 
-const styles = (theme) => ({
+import NavBarDrawer from './NavBarDrawer';
+
+const styles = theme => ({
   root: {
     width: '100%',
     padding: '0'
@@ -32,14 +34,15 @@ const styles = (theme) => ({
   navTabs: {
     padding: '1vw',
     textDecoration: 'none',
-    fontFamily: '"Montserrat", Arial, Helvetica, sans-serif'
+    fontFamily: '"Montserrat", Arial, Helvetica, sans-serif',
+    [theme.breakpoints.down('sm')]: {}
   },
   '@keyframes float': {
     '0% ': {
       transform: 'translatey(0px)'
     },
     '50%': {
-      transform: 'translatey(-10px)'
+      transform: 'translatey(-5px)'
     },
     '100%': {
       transform: ' translatey(0px)'
@@ -52,6 +55,17 @@ const styles = (theme) => ({
     height: '40px',
     width: '40px',
     display: 'block'
+  },
+  tapsContainer: {
+    [theme.breakpoints.down('xs')]: {
+      display: 'none !important'
+    },
+    [theme.breakpoints.up('xs')]: {
+      display: 'flex',
+      right: '0',
+      position: 'absolute'
+    },
+    textAlign: 'center'
   }
 });
 
@@ -59,6 +73,7 @@ let web3;
 
 if (window.web3) {
   web3 = new Web3(window.web3.currentProvider);
+  console.log(web3);
 }
 
 export class NavBar extends Component {
@@ -82,7 +97,7 @@ export class NavBar extends Component {
     this.getAccounts();
   }
 
-  isLoggedIn = (props) => {
+  isLoggedIn = props => {
     const { classes } = props;
     if (window.web3 && this.state.accounts.length > 0) {
       return (
@@ -128,25 +143,28 @@ export class NavBar extends Component {
               ADTRACTOR
             </Typography>
             <div className={classes.grow} />
-            <Typography
-              className={classes.navTabs}
-              variant="h6"
-              color="inherit"
-              component={Link}
-              to="/"
-            >
-              Home
-            </Typography>
-            {this.isLoggedIn(this.props)}
-            <Typography
-              className={classes.navTabs}
-              variant="h6"
-              color="inherit"
-              component={Link}
-              to="/create"
-            >
-              About Us
-            </Typography>
+            <NavBarDrawer />
+            <div className={classes.tapsContainer}>
+              <Typography
+                className={classes.navTabs}
+                variant="h6"
+                color="inherit"
+                component={Link}
+                to="/"
+              >
+                Home
+              </Typography>
+              {this.isLoggedIn(this.props)}
+              <Typography
+                className={classes.navTabs}
+                variant="h6"
+                color="inherit"
+                component={Link}
+                to="/aboutus"
+              >
+                About Us
+              </Typography>
+            </div>
           </Toolbar>
         </AppBar>
       </div>
