@@ -104,7 +104,7 @@ const ADTRACT_ABI = [
   }
 ];
 
-const styles = (theme) => ({
+const styles = theme => ({
   card: {
     minWidth: 275
   },
@@ -133,7 +133,7 @@ class RenderAdtract extends Component {
     this._isMounted = false;
   }
 
-  getInfo = async (address) => {
+  getInfo = async address => {
     const adtractContract = new web3.eth.Contract(ADTRACT_ABI, address);
     let description = await adtractContract.methods.description().call();
     let title = await adtractContract.methods.title().call();

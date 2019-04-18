@@ -132,7 +132,7 @@ export class NavBar extends Component {
       <div className={classes.root}>
         <AppBar position="static" className={classes.navigation}>
           <Toolbar>
-            <img src="./pictures/ethIcon.png" className={classes.icon} />
+            <img src="./pictures/ethIcon.png" alt={"eth"} className={classes.icon} />
             <Typography
               className={classes.title}
               variant="h6"

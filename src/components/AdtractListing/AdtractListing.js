@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Web3 from 'web3';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-import ListSubheader from '@material-ui/core/ListSubheader';
+import Grid from '@material-ui/core/Grid';
 import RenderAdtract from './RenderAdtract';
 import { withStyles } from '@material-ui/core';
 
@@ -80,18 +80,21 @@ const adtractorContract = new web3.eth.Contract(
   ADTRACTOR_ADDRESS
 );
 
-const styles = (theme) => ({
+const styles = theme => ({
   root: {
     display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'visible',
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
+    textAlign: 'center',
+    width: '100%',
+    overflow: 'hidden'
   },
   gridList: {
     height: 'auto',
-    width: 'auto'
-  }
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column-reverse'
+  },
+  title: {}
 });
 
 class AdtractListing extends Component {
@@ -148,27 +151,30 @@ class AdtractListing extends Component {
     if (this.state.adtracts) {
       return (
         <div className={classes.root}>
-          <GridList cellHeight={180} className={classes.gridList}>
-            <GridListTile
-              key="Subheader"
-              cols={2}
-              style={{ height: 'auto', textAlign: 'center' }}
-            >
-              <ListSubheader
-                component="div"
-                style={{ color: 'black', fontSize: '2em' }}
-              >
-                List of Adtracts
-              </ListSubheader>
-            </GridListTile>
-            {this.state.adtracts.map((adtract) => {
-              return (
-                <GridListTile key={adtract}>
-                  <RenderAdtract address={adtract} />
-                </GridListTile>
-              );
-            })}
-          </GridList>
+          <Grid container spacing={24}>
+            <Grid container item spacing={24} className={classes.title}>
+              <Grid item xs={12}>
+                <h1>List of AdTracts</h1>
+              </Grid>
+            </Grid>
+            <Grid container spacing={24}>
+              <Grid item xs={12}>
+                <GridList
+                  cellHeight={220}
+                  cols={1}
+                  className={classes.gridList}
+                >
+                  {this.state.adtracts.map(adtract => {
+                    return (
+                      <GridListTile key={adtract}>
+                        <RenderAdtract address={adtract} />
+                      </GridListTile>
+                    );
+                  })}
+                </GridList>
+              </Grid>
+            </Grid>
+          </Grid>
         </div>
       );
     } else {

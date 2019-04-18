@@ -10,7 +10,7 @@ import Chip from '@material-ui/core/Chip';
 import Web3 from 'web3';
 import { Link } from 'react-router-dom';
 
-const styles = (theme) => ({
+const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -24,18 +24,42 @@ const styles = (theme) => ({
     padding: theme.spacing.unit * 5,
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    marginTop: '10vh'
+    marginTop: '10vh',
+    borderRadius: '20px'
   },
   rightIcon: {
     marginLeft: theme.spacing.unit
   },
-  button: {
-    margin: theme.spacing.unit
+  buttonCreate: {
+    margin: theme.spacing.unit,
+    backgroundColor: 'black',
+    '&:hover': {
+      backgroundColor: '#424242'
+    }
+  },
+  buttonDelete: {
+    margin: theme.spacing.unit,
+    backgroundColor: '#d50000',
+    '&:hover': {
+      backgroundColor: '#ff1744'
+    }
   },
   chip: {
     margin: theme.spacing.unit,
-    backgroundColor: '#32CD32'
-  }
+    backgroundColor: 'black',
+    color: 'white'
+  },
+  inputFocused: {
+    '&:after': {
+      borderBottomColor: 'black'
+    }
+  },
+  cssLabel: {
+    '&$cssFocused': {
+      color: 'black'
+    }
+  },
+  cssFocused: {}
 });
 
 let web3;
@@ -147,11 +171,11 @@ class CreateAdtract extends Component {
     this._isMounted = false;
   }
 
-  handleChange = (name) => (event) => {
+  handleChange = name => event => {
     this.setState({ [name]: event.target.value });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     const { description, title, percentage, URL } = this.state;
     adtractorContract.methods
@@ -176,6 +200,7 @@ class CreateAdtract extends Component {
 
   render() {
     const { classes } = this.props;
+
     if (this.state.deployed) {
       return (
         <Grid
@@ -186,25 +211,23 @@ class CreateAdtract extends Component {
           spacing={24}
         >
           <Grid item xs={12}>
-            <div>Do you want to create another contract?</div>
+            <h1>Do you want to create another contract?</h1>
           </Grid>
-          <Grid item xs={6}>
+          <Grid container item xs={12} justify="center" alignItems="center">
             <Button
               variant="contained"
               color="secondary"
-              className={classes.button}
+              className={classes.buttonDelete}
               component={Link}
               to="/"
             >
               No
               <DeleteIcon className={classes.rightIcon} />
             </Button>
-          </Grid>
-          <Grid item xs={6}>
             <Button
               variant="contained"
               color="primary"
-              className={classes.button}
+              className={classes.buttonCreate}
               onClick={this.createAnotherContract}
             >
               Yes
@@ -217,7 +240,7 @@ class CreateAdtract extends Component {
     return (
       <div>
         <Chip
-          label={`Current Account: ${this.state.account}`}
+          label={`Account:${this.state.account}`}
           className={classes.chip}
         />
         <form
@@ -242,6 +265,17 @@ class CreateAdtract extends Component {
                   onChange={this.handleChange('title')}
                   value={this.state.title}
                   margin="normal"
+                  InputProps={{
+                    classes: {
+                      underline: classes.inputFocused
+                    }
+                  }}
+                  InputLabelProps={{
+                    classes: {
+                      root: classes.cssLabel,
+                      focused: classes.cssFocused
+                    }
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -252,6 +286,17 @@ class CreateAdtract extends Component {
                   onChange={this.handleChange('URL')}
                   value={this.state.URL}
                   margin="normal"
+                  InputProps={{
+                    classes: {
+                      underline: classes.inputFocused
+                    }
+                  }}
+                  InputLabelProps={{
+                    classes: {
+                      root: classes.cssLabel,
+                      focused: classes.cssFocused
+                    }
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -262,6 +307,17 @@ class CreateAdtract extends Component {
                   onChange={this.handleChange('description')}
                   value={this.state.description}
                   margin="normal"
+                  InputProps={{
+                    classes: {
+                      underline: classes.inputFocused
+                    }
+                  }}
+                  InputLabelProps={{
+                    classes: {
+                      root: classes.cssLabel,
+                      focused: classes.cssFocused
+                    }
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -272,8 +328,18 @@ class CreateAdtract extends Component {
                   onChange={this.handleChange('percentage')}
                   type="number"
                   className={classes.textField}
-                  inputProps={{ step: '1' }}
                   margin="normal"
+                  InputProps={{
+                    classes: {
+                      underline: classes.inputFocused
+                    }
+                  }}
+                  InputLabelProps={{
+                    classes: {
+                      root: classes.cssLabel,
+                      focused: classes.cssFocused
+                    }
+                  }}
                 />
               </Grid>
               <Grid
@@ -288,7 +354,7 @@ class CreateAdtract extends Component {
                   <Button
                     variant="contained"
                     color="secondary"
-                    className={classes.button}
+                    className={classes.buttonDelete}
                   >
                     Delete
                     <DeleteIcon className={classes.rightIcon} />
@@ -298,7 +364,7 @@ class CreateAdtract extends Component {
                   <Button
                     variant="contained"
                     color="primary"
-                    className={classes.button}
+                    className={classes.buttonCreate}
                     type="submit"
                   >
                     Create

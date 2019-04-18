@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = () => ({
-  root: {
-    
-  },
-  
-
+  root: {}
 });
 
 export class Home extends Component {
