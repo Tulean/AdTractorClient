@@ -16,9 +16,15 @@ const styles = theme => ({
   navigation: {
     backgroundColor: 'white',
     color: 'black',
-    [theme.breakpoints.down('630px')]: {
+    [theme.breakpoints.up('xs')]: {
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      height: '65px'
+    },
+    [theme.breakpoints.down('xs')]: {
+      display: 'flex',
+      flexDirection: 'column',
+      height: '60px'
     }
   },
   grow: {
@@ -132,7 +138,11 @@ export class NavBar extends Component {
       <div className={classes.root}>
         <AppBar position="static" className={classes.navigation}>
           <Toolbar>
-            <img src="./pictures/ethIcon.png" alt={"eth"} className={classes.icon} />
+            <img
+              src="./pictures/ethIcon.png"
+              alt={'eth'}
+              className={classes.icon}
+            />
             <Typography
               className={classes.title}
               variant="h6"

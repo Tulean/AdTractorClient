@@ -86,7 +86,9 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     textAlign: 'center',
     width: '100%',
-    overflow: 'hidden'
+    overflow: 'scroll',
+    overflowX: 'hidden',
+    borderRadius: '10px'
   },
   gridList: {
     height: 'auto',
