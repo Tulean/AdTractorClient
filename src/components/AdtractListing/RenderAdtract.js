@@ -106,7 +106,8 @@ const ADTRACT_ABI = [
 
 const styles = theme => ({
   card: {
-    minWidth: 275
+    width: '50vw',
+    fontSize: '2vw'
   },
   bullet: {
     display: 'inline-block',
@@ -114,7 +115,7 @@ const styles = theme => ({
     transform: 'scale(0.8)'
   },
   title: {
-    fontSize: 14
+    fontSize: '1.5vw'
   },
   pos: {
     marginBottom: 12

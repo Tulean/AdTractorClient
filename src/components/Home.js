@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
   root: {
     background:
-      'linear-gradient(to right, white, transparent), linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/pictures/homepage.jpg")',
+      'linear-gradient(to right, rgba(255, 255, 255, 0.8) 20%, rgba(255, 255, 255, 0.8) 80%, transparent), linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/pictures/homepage.jpg")',
     width: '100%',
     overflow: 'hidden',
     [theme.breakpoints.up('xs')]: {
@@ -47,6 +49,19 @@ const styles = theme => ({
       display: 'flex',
       justifyContent: 'center'
     }
+  },
+  learnButton: {
+    border: '5px solid',
+    [theme.breakpoints.up('xs')]: {
+      marginLeft: '2vw',
+      borderColor: 'black',
+      color: 'white',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      '&:hover': {
+        backgroundColor: 'rgba(0, 0, 0, 0.9)'
+      }
+    },
+    [theme.breakpoints.down('xs')]: {}
   }
 });
 
@@ -72,17 +87,39 @@ export class Home extends Component {
               direction="row"
               className={classes.secondaryText}
             >
-              <Grid item xs={12} className={classes.secondaryText}>
-                A Decentralized Advertising Network
+              <Grid container item direction="row" spacing={24}>
+                <Grid item xs={12} className={classes.secondaryText}>
+                  A Decentralized Advertising Network
+                </Grid>
+                <Grid item xs={12} align="center">
+                  <Button
+                    variant="outlined"
+                    className={classes.learnButton}
+                    component={Link}
+                    to="/create"
+                  >
+                    Get Started
+                  </Button>
+                </Grid>
               </Grid>
             </Grid>
-            <Grid continaer item direction="row" className={classes.text}>
-              <Grid item xs={5} className={classes.text}>
+            <Grid container item direction="row" className={classes.text}>
+              <Grid item xs={7} className={classes.text}>
                 Are you looking for a secure advertising network? Look no
                 further, AdTractor prevents fraud by utilizing security features
                 provided by the Ethereum blockchain. Our advertising network has
                 the potential to save companies billions of dollars per year.
                 Advertise with us before its too late.
+              </Grid>
+              <Grid item xs={7} align="right">
+                <Button
+                  variant="outlined"
+                  className={classes.learnButton}
+                  component={Link}
+                  to="/create"
+                >
+                  Get Started
+                </Button>
               </Grid>
             </Grid>
           </Grid>

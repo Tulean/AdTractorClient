@@ -11,6 +11,18 @@ import Web3 from 'web3';
 import { Link } from 'react-router-dom';
 
 const styles = theme => ({
+  root: {
+    background:
+      'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/pictures/createAdtract.jpg")',
+    width: '100%',
+    overflow: 'hidden',
+    [theme.breakpoints.up('xs')]: {
+      height: 'calc(100vh - 65px)'
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: 'calc(100vh - 60px)'
+    }
+  },
   container: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -59,7 +71,10 @@ const styles = theme => ({
       color: 'black'
     }
   },
-  cssFocused: {}
+  cssFocused: {},
+  question: {
+    color: 'white'
+  }
 });
 
 let web3;
@@ -203,42 +218,44 @@ class CreateAdtract extends Component {
 
     if (this.state.deployed) {
       return (
-        <Grid
-          container
-          justify="center"
-          alignItems="center"
-          direction="column"
-          spacing={24}
-        >
-          <Grid item xs={12}>
-            <h1>Do you want to create another contract?</h1>
+        <div className={classes.root}>
+          <Grid
+            container
+            justify="center"
+            alignItems="center"
+            direction="column"
+            spacing={24}
+          >
+            <Grid item xs={12} className={classes.question}>
+              <h1>Do you want to create another contract?</h1>
+            </Grid>
+            <Grid container item xs={12} justify="center" alignItems="center">
+              <Button
+                variant="contained"
+                color="secondary"
+                className={classes.buttonDelete}
+                component={Link}
+                to="/"
+              >
+                No
+                <DeleteIcon className={classes.rightIcon} />
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.buttonCreate}
+                onClick={this.createAnotherContract}
+              >
+                Yes
+                <SendIcon className={classes.rightIcon} />
+              </Button>
+            </Grid>
           </Grid>
-          <Grid container item xs={12} justify="center" alignItems="center">
-            <Button
-              variant="contained"
-              color="secondary"
-              className={classes.buttonDelete}
-              component={Link}
-              to="/"
-            >
-              No
-              <DeleteIcon className={classes.rightIcon} />
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.buttonCreate}
-              onClick={this.createAnotherContract}
-            >
-              Yes
-              <SendIcon className={classes.rightIcon} />
-            </Button>
-          </Grid>
-        </Grid>
+        </div>
       );
     }
     return (
-      <div>
+      <div className={classes.root}>
         <Chip
           label={`Account:${this.state.account}`}
           className={classes.chip}

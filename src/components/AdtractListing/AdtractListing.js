@@ -81,22 +81,55 @@ const adtractorContract = new web3.eth.Contract(
 );
 
 const styles = theme => ({
+  '@global': {
+    '*::-webkit-scrollbar': {
+      width: '0.4em'
+    },
+    '*::-webkit-scrollbar-track': {
+      '-webkit-box-shadow': 'inset 0 0 6px rgba(255,255,255,0.5)'
+    },
+    '*::-webkit-scrollbar-thumb': {
+      backgroundColor: 'white',
+      outline: '1px solid slategrey'
+    }
+  },
   root: {
     display: 'flex',
     backgroundColor: theme.palette.background.paper,
     textAlign: 'center',
     width: '100%',
-    overflow: 'scroll',
-    overflowX: 'hidden',
-    borderRadius: '10px'
+    overflow: 'hidden',
+    background:
+      'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/pictures/contracts.jpg") no-repeat',
+    backgroundSize: 'cover !important'
   },
   gridList: {
-    height: 'auto',
+    [theme.breakpoints.up('xs')]: {
+      height: 'calc(100vh - 65px - 8vh)'
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: 'calc(100vh - 60px - 8vh)'
+    },
+    height: '40vh',
     width: '100%',
     display: 'flex',
     flexDirection: 'column-reverse'
   },
-  title: {}
+  tile: {
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  title: {
+    height: '2vh',
+    marginBottom: '6vh',
+    color: 'white',
+    [theme.breakpoints.up('xs')]: {
+      fontSize: 'calc(1vw + 7px)'
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '3vw'
+    }
+  }
 });
 
 class AdtractListing extends Component {
@@ -153,22 +186,18 @@ class AdtractListing extends Component {
     if (this.state.adtracts) {
       return (
         <div className={classes.root}>
-          <Grid container spacing={24}>
-            <Grid container item spacing={24} className={classes.title}>
+          <Grid container spacing={0} style={{ overflow: 'hidden' }}>
+            <Grid container item spacing={0} className={classes.title}>
               <Grid item xs={12}>
                 <h1>List of AdTracts</h1>
               </Grid>
             </Grid>
-            <Grid container spacing={24}>
-              <Grid item xs={12}>
-                <GridList
-                  cellHeight={220}
-                  cols={1}
-                  className={classes.gridList}
-                >
+            <Grid container spacing={0}>
+              <Grid item xs={12} className={classes.gridList}>
+                <GridList cellHeight={200} cols={1}>
                   {this.state.adtracts.map(adtract => {
                     return (
-                      <GridListTile key={adtract}>
+                      <GridListTile key={adtract} className={classes.tile}>
                         <RenderAdtract address={adtract} />
                       </GridListTile>
                     );

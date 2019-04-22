@@ -16,6 +16,7 @@ const styles = theme => ({
   navigation: {
     backgroundColor: 'white',
     color: 'black',
+    borderBottom: '0.5px solid grey',
     [theme.breakpoints.up('xs')]: {
       display: 'flex',
       flexDirection: 'column',
