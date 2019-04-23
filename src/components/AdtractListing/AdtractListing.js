@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import RenderAdtract from './RenderAdtract';
 import { withStyles } from '@material-ui/core';
 
+
 let web3;
 
 if (window.web3) {
@@ -121,13 +122,14 @@ const styles = theme => ({
   },
   title: {
     height: '2vh',
-    marginBottom: '6vh',
     color: 'white',
     [theme.breakpoints.up('xs')]: {
-      fontSize: 'calc(1vw + 7px)'
+      fontSize: 'calc(1vw + 7px)',
+      marginBottom: '70px'
     },
     [theme.breakpoints.down('xs')]: {
-      fontSize: '3vw'
+      fontSize: '3vw',
+      marginBottom: '6vh'
     }
   }
 });

@@ -34,6 +34,7 @@ const styles = theme => ({
     width: '100%'
   },
   paper: {
+    background: 'rgba(255, 255, 255, 0.8)',
     marginBottom: '40px',
     padding: theme.spacing.unit * 5,
     textAlign: 'center',

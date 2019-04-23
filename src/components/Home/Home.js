@@ -3,11 +3,14 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import Modal from '@material-ui/core/Modal';
+import GetStarted from './GetStarted';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
     background:
-      'linear-gradient(to right, rgba(255, 255, 255, 0.8) 20%, rgba(255, 255, 255, 0.8) 80%, transparent), linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/pictures/homepage.jpg")',
+      'linear-gradient(to right, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.8) 40%, rgba(0, 0, 0, 0.4)), url("/pictures/homepage.jpg")',
     width: '100%',
     backgroundSize: 'cover',
     overflow: 'hidden',
@@ -36,7 +39,6 @@ const styles = theme => ({
   },
   text: {
     paddingLeft: '2vw',
-    fontSize: 'calc(7px + 1.3vw)',
     [theme.breakpoints.down('xs')]: {
       display: 'none'
     }
@@ -67,6 +69,16 @@ const styles = theme => ({
 });
 
 export class Home extends Component {
+  state = { open: false };
+
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -96,8 +108,7 @@ export class Home extends Component {
                   <Button
                     variant="outlined"
                     className={classes.learnButton}
-                    component={Link}
-                    to="/create"
+                    onClick={this.handleOpen}
                   >
                     Get Started
                   </Button>
@@ -105,26 +116,35 @@ export class Home extends Component {
               </Grid>
             </Grid>
             <Grid container item direction="row" className={classes.text}>
-              <Grid item xs={7} className={classes.text}>
-                Are you looking for a secure advertising network? Look no
-                further, AdTractor prevents fraud by utilizing security features
-                provided by the Ethereum blockchain. Our advertising network has
-                the potential to save companies billions of dollars per year.
-                Advertise with us before its too late.
-              </Grid>
-              <Grid item xs={7} align="right">
-                <Button
-                  variant="outlined"
-                  className={classes.learnButton}
-                  component={Link}
-                  to="/create"
-                >
-                  Get Started
-                </Button>
+              <Grid item xs={5} className={classes.text}>
+                <Typography paragraph="true" variant="subtitle1">
+                  Are you looking for a secure advertising network? Look no
+                  further, AdTractor prevents fraud by utilizing security
+                  features provided by the Ethereum blockchain. Our advertising
+                  network has the potential to save companies billions of
+                  dollars per year. Advertise with us before its too late.
+                </Typography>
+                <Typography variant="button">
+                  <Button
+                    variant="outlined"
+                    className={classes.learnButton}
+                    onClick={this.handleOpen}
+                  >
+                    Get Started
+                  </Button>
+                </Typography>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
+        <Modal
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={this.state.open}
+          onClose={this.handleClose}
+        >
+          <GetStarted />
+        </Modal>
       </div>
     );
   }
