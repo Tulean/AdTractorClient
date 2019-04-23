@@ -14,8 +14,9 @@ const styles = theme => ({
   root: {
     background:
       'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/pictures/createAdtract.jpg")',
+    backgroundSize: 'cover',
     width: '100%',
-    overflow: 'hidden',
+    overflow: 'auto',
     [theme.breakpoints.up('xs')]: {
       height: 'calc(100vh - 65px)'
     },
@@ -33,11 +34,20 @@ const styles = theme => ({
     width: '100%'
   },
   paper: {
+    marginBottom: '40px',
     padding: theme.spacing.unit * 5,
     textAlign: 'center',
     color: theme.palette.text.secondary,
     marginTop: '10vh',
-    borderRadius: '20px'
+    borderRadius: '20px',
+    [theme.breakpoints.up('xs')]: {
+      height: '450px'
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '480px',
+      marginTop: '20px',
+      width: '60%'
+    }
   },
   rightIcon: {
     marginLeft: theme.spacing.unit
@@ -59,7 +69,10 @@ const styles = theme => ({
   chip: {
     margin: theme.spacing.unit,
     backgroundColor: 'black',
-    color: 'white'
+    color: 'white',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '11px'
+    }
   },
   inputFocused: {
     '&:after': {
@@ -73,7 +86,9 @@ const styles = theme => ({
   },
   cssFocused: {},
   question: {
-    color: 'white'
+    color: 'white',
+    fontSize: '2.5vw',
+    margin: '20px'
   }
 });
 
@@ -229,7 +244,7 @@ class CreateAdtract extends Component {
             <Grid item xs={12} className={classes.question}>
               <h1>Do you want to create another contract?</h1>
             </Grid>
-            <Grid container item xs={12} justify="center" alignItems="center">
+            <Grid container item xs={12} justify="center" alignContent="center">
               <Button
                 variant="contained"
                 color="secondary"
@@ -245,6 +260,7 @@ class CreateAdtract extends Component {
                 color="primary"
                 className={classes.buttonCreate}
                 onClick={this.createAnotherContract}
+                style={{ backgroundColor: 'white', color: 'black' }}
               >
                 Yes
                 <SendIcon className={classes.rightIcon} />
@@ -253,147 +269,150 @@ class CreateAdtract extends Component {
           </Grid>
         </div>
       );
-    }
-    return (
-      <div className={classes.root}>
-        <Chip
-          label={`Account:${this.state.account}`}
-          className={classes.chip}
-        />
-        <form
-          className={classes.container}
-          noValidate
-          autoComplete="off"
-          onSubmit={this.handleSubmit}
-        >
-          <Paper className={classes.paper}>
-            <Grid
-              container
-              justify="center"
-              alignItems="center"
-              direction="column"
-              spacing={24}
-            >
-              <Grid item xs={12}>
-                <TextField
-                  id="standard-title"
-                  label="Title"
-                  className={classes.textField}
-                  onChange={this.handleChange('title')}
-                  value={this.state.title}
-                  margin="normal"
-                  InputProps={{
-                    classes: {
-                      underline: classes.inputFocused
-                    }
-                  }}
-                  InputLabelProps={{
-                    classes: {
-                      root: classes.cssLabel,
-                      focused: classes.cssFocused
-                    }
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  id="standard-url"
-                  label="URL (Optional)"
-                  className={classes.textField}
-                  onChange={this.handleChange('URL')}
-                  value={this.state.URL}
-                  margin="normal"
-                  InputProps={{
-                    classes: {
-                      underline: classes.inputFocused
-                    }
-                  }}
-                  InputLabelProps={{
-                    classes: {
-                      root: classes.cssLabel,
-                      focused: classes.cssFocused
-                    }
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  id="standard-description"
-                  label="Description"
-                  className={classes.textField}
-                  onChange={this.handleChange('description')}
-                  value={this.state.description}
-                  margin="normal"
-                  InputProps={{
-                    classes: {
-                      underline: classes.inputFocused
-                    }
-                  }}
-                  InputLabelProps={{
-                    classes: {
-                      root: classes.cssLabel,
-                      focused: classes.cssFocused
-                    }
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  id="standard-number"
-                  label="Reward percentage"
-                  value={this.state.age}
-                  onChange={this.handleChange('percentage')}
-                  type="number"
-                  className={classes.textField}
-                  margin="normal"
-                  InputProps={{
-                    classes: {
-                      underline: classes.inputFocused
-                    }
-                  }}
-                  InputLabelProps={{
-                    classes: {
-                      root: classes.cssLabel,
-                      focused: classes.cssFocused
-                    }
-                  }}
-                />
-              </Grid>
+    } else if (this.state.account) {
+      return (
+        <div className={classes.root}>
+          <Chip
+            label={`Account:${this.state.account}`}
+            className={classes.chip}
+          />
+          <form
+            className={classes.container}
+            noValidate
+            autoComplete="off"
+            onSubmit={this.handleSubmit}
+          >
+            <Paper className={classes.paper}>
               <Grid
-                item
                 container
                 justify="center"
                 alignItems="center"
-                direction="row"
+                direction="column"
                 spacing={24}
               >
-                <Grid item xs={6}>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    className={classes.buttonDelete}
-                  >
-                    Delete
-                    <DeleteIcon className={classes.rightIcon} />
-                  </Button>
+                <Grid item xs={12}>
+                  <TextField
+                    id="standard-title"
+                    label="Title"
+                    className={classes.textField}
+                    onChange={this.handleChange('title')}
+                    value={this.state.title}
+                    margin="normal"
+                    InputProps={{
+                      classes: {
+                        underline: classes.inputFocused
+                      }
+                    }}
+                    InputLabelProps={{
+                      classes: {
+                        root: classes.cssLabel,
+                        focused: classes.cssFocused
+                      }
+                    }}
+                  />
                 </Grid>
-                <Grid item xs={6}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.buttonCreate}
-                    type="submit"
-                  >
-                    Create
-                    <SendIcon className={classes.rightIcon} />
-                  </Button>
+                <Grid item xs={12}>
+                  <TextField
+                    id="standard-url"
+                    label="URL (Optional)"
+                    className={classes.textField}
+                    onChange={this.handleChange('URL')}
+                    value={this.state.URL}
+                    margin="normal"
+                    InputProps={{
+                      classes: {
+                        underline: classes.inputFocused
+                      }
+                    }}
+                    InputLabelProps={{
+                      classes: {
+                        root: classes.cssLabel,
+                        focused: classes.cssFocused
+                      }
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    id="standard-description"
+                    label="Description"
+                    className={classes.textField}
+                    onChange={this.handleChange('description')}
+                    value={this.state.description}
+                    margin="normal"
+                    InputProps={{
+                      classes: {
+                        underline: classes.inputFocused
+                      }
+                    }}
+                    InputLabelProps={{
+                      classes: {
+                        root: classes.cssLabel,
+                        focused: classes.cssFocused
+                      }
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    id="standard-number"
+                    label="Reward percentage"
+                    value={this.state.age}
+                    onChange={this.handleChange('percentage')}
+                    type="number"
+                    className={classes.textField}
+                    margin="normal"
+                    InputProps={{
+                      classes: {
+                        underline: classes.inputFocused
+                      }
+                    }}
+                    InputLabelProps={{
+                      classes: {
+                        root: classes.cssLabel,
+                        focused: classes.cssFocused
+                      }
+                    }}
+                  />
+                </Grid>
+                <Grid
+                  item
+                  container
+                  justify="center"
+                  alignItems="center"
+                  direction="row"
+                  spacing={24}
+                >
+                  <Grid item sm={6}>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      className={classes.buttonDelete}
+                    >
+                      Delete
+                      <DeleteIcon className={classes.rightIcon} />
+                    </Button>
+                  </Grid>
+                  <Grid item sm={6}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      className={classes.buttonCreate}
+                      type="submit"
+                    >
+                      Create
+                      <SendIcon className={classes.rightIcon} />
+                    </Button>
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-          </Paper>
-        </form>
-      </div>
-    );
+            </Paper>
+          </form>
+        </div>
+      );
+    } else {
+      return <div>Please login into metamask</div>;
+    }
   }
 }
 

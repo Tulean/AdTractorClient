@@ -9,6 +9,7 @@ const styles = theme => ({
     background:
       'linear-gradient(to right, rgba(255, 255, 255, 0.8) 20%, rgba(255, 255, 255, 0.8) 80%, transparent), linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/pictures/homepage.jpg")',
     width: '100%',
+    backgroundSize: 'cover',
     overflow: 'hidden',
     [theme.breakpoints.up('xs')]: {
       height: 'calc(100vh - 65px)'
