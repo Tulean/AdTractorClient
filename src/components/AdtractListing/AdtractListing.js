@@ -6,7 +6,6 @@ import Grid from '@material-ui/core/Grid';
 import RenderAdtract from './RenderAdtract';
 import { withStyles } from '@material-ui/core';
 
-
 let web3;
 
 if (window.web3) {
@@ -114,7 +113,7 @@ const styles = theme => ({
     height: '40vh',
     width: '100%',
     display: 'flex',
-    flexDirection: 'column-reverse'
+    flexDirection: 'column'
   },
   tile: {
     display: 'flex',
