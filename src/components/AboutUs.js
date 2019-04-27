@@ -61,25 +61,25 @@ class AboutUs extends Component {
           <Grid item xs={6} sm={6} md={3}>
             {this.cardGenerate(
               'Tuan Anh Le',
-              'https://via.placeholder.com/150'
+              '/pictures/avatar.jpg'
             )}
           </Grid>
           <Grid item xs={6} sm={6} md={3}>
             {this.cardGenerate(
               'Tsering Dolkar',
-              'https://via.placeholder.com/150'
+              '/pictures/avatar.jpg'
             )}
           </Grid>
           <Grid item xs={6} sm={6} md={3}>
             {this.cardGenerate(
               'Cameron Taylor',
-              'https://via.placeholder.com/150'
+              '/pictures/avatar.jpg'
             )}
           </Grid>
           <Grid item xs={6} sm={6} md={3}>
             {this.cardGenerate(
               'Jiahao Liu ',
-              'https://via.placeholder.com/150'
+              '/pictures/avatar.jpg'
             )}
           </Grid>
         </Grid>
