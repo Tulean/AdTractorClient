@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import { SocialIcon } from 'react-social-icons';
 
 const styles = theme => ({
   root: {
@@ -22,6 +23,15 @@ const styles = theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     overflow: 'hidden'
+  },
+  row1: {
+    height: 250
+  },
+  row2: {
+
+    height: 90,
+    marginLeft: "30%",
+    marginRight: "20%"
   },
   card: {
     maxWidth: 250
@@ -57,32 +67,46 @@ class AboutUs extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Grid container spacing={40} align="center" className={classes.wrap}>
-          <Grid item xs={6} sm={6} md={3}>
-            {this.cardGenerate(
-              'Tuan Anh Le',
-              '/pictures/avatar.jpg'
-            )}
+          <Grid container spacing={40} align="center" className={classes.wrap}>
+            <Grid item xs={6} sm={6} md={3}>
+              {this.cardGenerate(
+                'Tuan Anh Le',
+                '/pictures/avatar.jpg'
+              )}
+            </Grid>
+            <Grid item xs={6} sm={6} md={3}>
+              {this.cardGenerate(
+                'Tsering Dolkar',
+                '/pictures/avatar.jpg'
+              )}
+            </Grid>
+            <Grid item xs={6} sm={6} md={3}>
+              {this.cardGenerate(
+                'Cameron Taylor',
+                '/pictures/avatar.jpg'
+              )}
+            </Grid>
+            <Grid item xs={6} sm={6} md={3}>
+              {this.cardGenerate(
+                'Jiahao Liu ',
+                '/pictures/avatar.jpg'
+              )}
+            </Grid>
           </Grid>
-          <Grid item xs={6} sm={6} md={3}>
-            {this.cardGenerate(
-              'Tsering Dolkar',
-              '/pictures/avatar.jpg'
-            )}
+          <Grid container spacing={40} align="center" className={classes.wrap}>
+              <Grid item xs={6} sm={6} md={3}>
+                <SocialIcon url="https://twitter.com/AdTractor" />
+              </Grid>
+              <Grid item xs={6} sm={6} md={3}>
+                <SocialIcon url="https://www.facebook.com/weAdTractor/" />
+              </Grid>
+              <Grid item xs={6} sm={6} md={3}>
+                <SocialIcon url="https://chuansongme.com/" network="wechat"/>
+              </Grid>
+              <Grid item xs={6} sm={6} md={3}>
+                <SocialIcon url="mailto:weadtractor@gmail.com" network="email" />
+              </Grid>
           </Grid>
-          <Grid item xs={6} sm={6} md={3}>
-            {this.cardGenerate(
-              'Cameron Taylor',
-              '/pictures/avatar.jpg'
-            )}
-          </Grid>
-          <Grid item xs={6} sm={6} md={3}>
-            {this.cardGenerate(
-              'Jiahao Liu ',
-              '/pictures/avatar.jpg'
-            )}
-          </Grid>
-        </Grid>
       </div>
     );
   }
