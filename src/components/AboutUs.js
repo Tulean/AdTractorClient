@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { SocialIcon } from 'react-social-icons';
+import { autoPlay } from 'react-swipeable-views-utils';
 
 const styles = theme => ({
   root: {
@@ -34,14 +35,29 @@ const styles = theme => ({
     marginRight: "20%"
   },
   card: {
-    maxWidth: 250
+    maxWidth: 250,
+    background: 'transparent'
   },
   media: {
     height: 150
   },
+  social: {
+    position: 'fixed',
+    width: '30px',
+    top: 'auto',
+    bottom: 0,
+    margin: 'auto',
+    marginLeft: "95%",
+  },
   wrap: {
     paddingLeft: '10px',
     paddingRight: '10px'
+  },
+  tab: {
+    background: "white",
+    height: "48px",
+    top: 'auto',
+    buttom: 0
   }
 });
 class AboutUs extends Component {
@@ -93,17 +109,17 @@ class AboutUs extends Component {
               )}
             </Grid>
           </Grid>
-          <Grid container spacing={40} align="center" className={classes.wrap}>
-              <Grid item xs={6} sm={6} md={3}>
+          <Grid container spacing={6} className={classes.social}>
+              <Grid item xs>
                 <SocialIcon url="https://twitter.com/AdTractor" />
               </Grid>
-              <Grid item xs={6} sm={6} md={3}>
+              <Grid item xs>
                 <SocialIcon url="https://www.facebook.com/weAdTractor/" />
               </Grid>
-              <Grid item xs={6} sm={6} md={3}>
+              <Grid item xs>
                 <SocialIcon url="https://chuansongme.com/" network="wechat"/>
               </Grid>
-              <Grid item xs={6} sm={6} md={3}>
+              <Grid item xs>
                 <SocialIcon url="mailto:weadtractor@gmail.com" network="email" />
               </Grid>
           </Grid>

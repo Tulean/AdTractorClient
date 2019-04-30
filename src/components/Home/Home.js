@@ -29,10 +29,10 @@ const styles = theme => ({
     backgroundSize: 'cover',
     overflow: 'hidden',
     [theme.breakpoints.up('xs')]: {
-      height: 'calc(100vh - 65px)'
+      height: 'calc(100vh - 65px - 48px)'
     },
     [theme.breakpoints.down('xs')]: {
-      height: 'calc(100vh - 60px)'
+      height: 'calc(100vh - 60px - 48px)'
     }
   },
   slide4:{
@@ -42,10 +42,10 @@ const styles = theme => ({
     backgroundSize: 'cover',
     overflow: 'hidden',
     [theme.breakpoints.up('xs')]: {
-      height: 'calc(100vh - 65px)'
+      height: 'calc(100vh - 65px - 48px)'
     },
     [theme.breakpoints.down('xs')]: {
-      height: 'calc(100vh - 60px)'
+      height: 'calc(100vh - 60px - 48px)'
     }
   },
   slide3:{
@@ -55,10 +55,10 @@ const styles = theme => ({
     backgroundSize: 'cover',
     overflow: 'hidden',
     [theme.breakpoints.up('xs')]: {
-      height: 'calc(100vh - 65px)'
+      height: 'calc(100vh - 65px - 48px)'
     },
     [theme.breakpoints.down('xs')]: {
-      height: 'calc(100vh - 60px)'
+      height: 'calc(100vh - 60px - 48px)'
     }
   },
   slide2:{
@@ -68,10 +68,10 @@ const styles = theme => ({
     backgroundSize: 'cover',
     overflow: 'hidden',
     [theme.breakpoints.up('xs')]: {
-      height: 'calc(100vh - 65px)'
+      height: 'calc(100vh - 65px - 48px)'
     },
     [theme.breakpoints.down('xs')]: {
-      height: 'calc(100vh - 60px)'
+      height: 'calc(100vh - 60px - 48px)'
     }
   },
   textHome: {
@@ -118,6 +118,9 @@ const styles = theme => ({
       }
     },
     [theme.breakpoints.down('xs')]: {}
+  },
+  tab: {
+    height: "48px"
   }
 });
 
@@ -162,7 +165,7 @@ export class Home extends Component {
     const { index } = this.state;
     return (
       <div className={classes.root}>
-      <Tabs value={index} fullWidth onChange={this.handleChange} style={styles.tabs}>
+      <Tabs value={index} fullWidth onChange={this.handleChange} className={classes.tab}>
         <Tab label="homepage" />
         <Tab label="dAPP" />
         <Tab label="metamask" />
