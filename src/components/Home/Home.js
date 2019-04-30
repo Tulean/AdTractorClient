@@ -113,6 +113,9 @@ const styles = theme => ({
       }
     },
     [theme.breakpoints.down('xs')]: {}
+  },
+  tab: {
+    height: "48px"
   }
 });
 
