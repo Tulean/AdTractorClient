@@ -7,7 +7,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { SocialIcon } from 'react-social-icons';
-import { autoPlay } from 'react-swipeable-views-utils';
 
 const styles = theme => ({
   root: {
@@ -36,7 +35,7 @@ const styles = theme => ({
   },
   card: {
     maxWidth: 250,
-    background: 'transparent'
+    background: 'transparent',
   },
   media: {
     height: 150
@@ -68,10 +67,10 @@ class AboutUs extends Component {
         <CardActionArea>
           <CardMedia className={classes.media} image={image} />
           <CardContent>
-            <Typography gutterBottom variant="h6" component="h2" align="center">
+            <Typography gutterBottom variant="h6" component="h2" align="center" style={{color: 'white'}}>
               {name}
             </Typography>
-            <Typography component="p" align="center">
+            <Typography component="p" align="center" style={{color: 'white'}}>
               {title}
             </Typography>
           </CardContent>
@@ -87,25 +86,29 @@ class AboutUs extends Component {
             <Grid item xs={6} sm={6} md={3}>
               {this.cardGenerate(
                 'Tuan Anh Le',
-                '/pictures/avatar.jpg'
+                '/pictures/avatar.jpg',
+                'Project Manager'
               )}
             </Grid>
             <Grid item xs={6} sm={6} md={3}>
               {this.cardGenerate(
                 'Tsering Dolkar',
-                '/pictures/avatar.jpg'
+                '/pictures/avatar.jpg',
+                'Document Manager'
               )}
             </Grid>
             <Grid item xs={6} sm={6} md={3}>
               {this.cardGenerate(
                 'Cameron Taylor',
-                '/pictures/avatar.jpg'
+                '/pictures/avatar.jpg',
+                'Technology Manager'
               )}
             </Grid>
             <Grid item xs={6} sm={6} md={3}>
               {this.cardGenerate(
                 'Jiahao Liu ',
-                '/pictures/avatar.jpg'
+                '/pictures/avatar.jpg',
+                'Front End Manager'
               )}
             </Grid>
           </Grid>
