@@ -213,6 +213,15 @@ class CreateAdtract extends Component {
       .then(this.deployed());
   };
 
+  deleteInputs = () => {
+    this.setState({
+      title: '',
+      description: '',
+      percentage: 0,
+      URL: ''
+    });
+  };
+
   deployed = () => {
     this.setState({
       title: '',
@@ -387,6 +396,7 @@ class CreateAdtract extends Component {
                       variant="contained"
                       color="secondary"
                       className={classes.buttonDelete}
+                      onClick={this.deleteInputs}
                     >
                       Delete
                       <DeleteIcon className={classes.rightIcon} />
