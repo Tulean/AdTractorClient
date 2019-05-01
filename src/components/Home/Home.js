@@ -165,7 +165,9 @@ export class Home extends Component {
           value={index}
           fullWidth
           onChange={this.handleChange}
-          style={{ height: '48px' }}
+          style={{
+            height: '48px'
+          }}
         >
           <Tab label="AdTractor" />
           <Tab label="dAPP" />

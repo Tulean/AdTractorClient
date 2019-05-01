@@ -42,7 +42,10 @@ const styles = theme => ({
     padding: '1vw',
     textDecoration: 'none',
     fontFamily: '"Montserrat", Arial, Helvetica, sans-serif',
-    [theme.breakpoints.down('sm')]: {}
+    '&:hover': {
+      backgroundColor: 'rgba(2, 0, 0, 0.1)'
+    },
+    borderRadius: '5px'
   },
   '@keyframes float': {
     '0% ': {
