@@ -160,11 +160,6 @@ const ADTRACTOR_ABI = [
   }
 ];
 
-const adtractorContract = new web3.eth.Contract(
-  ADTRACTOR_ABI,
-  ADTRACTOR_ADDRESS
-);
-
 class CreateAdtract extends Component {
   constructor(props) {
     super(props);
@@ -176,6 +171,10 @@ class CreateAdtract extends Component {
       account: ['loading...'],
       deployed: false
     };
+    this.adtractorContract = new web3.eth.Contract(
+      ADTRACTOR_ABI,
+      ADTRACTOR_ADDRESS
+    );
     this._isMounted = false;
   }
 
@@ -208,7 +207,7 @@ class CreateAdtract extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { description, title, percentage, URL } = this.state;
-    adtractorContract.methods
+    this.adtractorContract.methods
       .newAdTract(percentage, description, URL, title)
       .send({ from: this.state.account })
       .then(this.deployed());

@@ -75,11 +75,6 @@ const ADTRACTOR_ABI = [
   }
 ];
 
-const adtractorContract = new web3.eth.Contract(
-  ADTRACTOR_ABI,
-  ADTRACTOR_ADDRESS
-);
-
 const styles = theme => ({
   '@global': {
     '*::-webkit-scrollbar': {
@@ -141,6 +136,10 @@ class AdtractListing extends Component {
       adtracts: []
     };
     this._isMounted = false;
+    this.adtractorContract = new web3.eth.Contract(
+      ADTRACTOR_ABI,
+      ADTRACTOR_ADDRESS
+    );
   }
 
   getAccounts = async () => {
@@ -154,9 +153,9 @@ class AdtractListing extends Component {
 
   getAdtracts = async () => {
     const _adtracts = [];
-    let i = await adtractorContract.methods.contractsCount().call();
+    let i = await this.adtractorContract.methods.contractsCount().call();
     for (let x = 0; x < i; x++) {
-      const result = await adtractorContract.methods.adtracts(x).call();
+      const result = await this.adtractorContract.methods.adtracts(x).call();
       _adtracts.push(result);
     }
     this.setState({ adtracts: _adtracts });
