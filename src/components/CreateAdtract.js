@@ -35,11 +35,10 @@ const styles = theme => ({
   },
   paper: {
     background: 'rgba(255, 255, 255, 0.8)',
-    marginBottom: '40px',
     padding: theme.spacing.unit * 5,
     textAlign: 'center',
     color: theme.palette.text.secondary,
-    marginTop: '10vh',
+    marginTop: '5vh',
     borderRadius: '20px',
     [theme.breakpoints.up('xs')]: {
       height: '450px'

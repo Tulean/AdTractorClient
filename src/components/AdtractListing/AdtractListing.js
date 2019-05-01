@@ -100,7 +100,7 @@ const styles = theme => ({
     width: '100%',
     overflow: 'hidden',
     background:
-      'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/pictures/contracts.jpg") no-repeat',
+      'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/pictures/contracts.jpg")',
     backgroundSize: 'cover !important'
   },
   gridList: {
