@@ -247,7 +247,7 @@ class CreateAdtract extends Component {
             justify="center"
             alignItems="center"
             direction="column"
-            spacing={24}
+            spacing={0}
           >
             <Grid item xs={12} className={classes.question}>
               <h1>Do you want to create another contract?</h1>
@@ -296,7 +296,7 @@ class CreateAdtract extends Component {
                 justify="center"
                 alignItems="center"
                 direction="column"
-                spacing={24}
+                spacing={0}
               >
                 <Grid item xs={12}>
                   <TextField

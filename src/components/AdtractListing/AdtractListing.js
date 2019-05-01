@@ -96,7 +96,13 @@ const styles = theme => ({
     overflow: 'hidden',
     background:
       'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/pictures/contracts.jpg")',
-    backgroundSize: 'cover !important'
+    backgroundSize: 'cover !important',
+    [theme.breakpoints.up('xs')]: {
+      height: 'calc(100vh - 65px)'
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: 'calc(100vh - 60px)'
+    }
   },
   gridList: {
     [theme.breakpoints.up('xs')]: {
@@ -109,6 +115,9 @@ const styles = theme => ({
     width: '100%',
     display: 'flex',
     flexDirection: 'column'
+  },
+  gridListWrapper: {
+    height: '400px'
   },
   tile: {
     display: 'flex',
@@ -186,24 +195,22 @@ class AdtractListing extends Component {
     if (this.state.adtracts) {
       return (
         <div className={classes.root}>
-          <Grid container spacing={0} style={{ overflow: 'hidden' }}>
+          <Grid container spacing={0}>
             <Grid container item spacing={0} className={classes.title}>
               <Grid item xs={12}>
                 <h1>List of AdTracts</h1>
               </Grid>
             </Grid>
-            <Grid container spacing={0}>
-              <Grid item xs={12} className={classes.gridList}>
-                <GridList cellHeight={200} cols={1}>
-                  {this.state.adtracts.map(adtract => {
-                    return (
-                      <GridListTile key={adtract} className={classes.tile}>
-                        <RenderAdtract address={adtract} />
-                      </GridListTile>
-                    );
-                  })}
-                </GridList>
-              </Grid>
+            <Grid item xs={12} className={classes.gridList}>
+              <GridList cellHeight={200} cols={1}>
+                {this.state.adtracts.map(adtract => {
+                  return (
+                    <GridListTile key={adtract} className={classes.tile}>
+                      <RenderAdtract address={adtract} />
+                    </GridListTile>
+                  );
+                })}
+              </GridList>
             </Grid>
           </Grid>
         </div>

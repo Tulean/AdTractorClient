@@ -73,15 +73,21 @@ const styles = theme => ({
   },
   title: {
     padding: 'none',
-    [theme.breakpoints.up('xs')]: {
+    [theme.breakpoints.up('sm')]: {
       fontSize: '5vw',
       paddingLeft: '2vw',
       paddingTop: '25vh'
     },
+    [theme.breakpoints.only('sm')]: {
+      fontSize: '5vw',
+      paddingLeft: '2vw',
+      paddingTop: '3vh'
+    },
     [theme.breakpoints.down('xs')]: {
       display: 'flex',
       justifyContent: 'center',
-      fontSize: '10vh'
+      fontSize: '10vw',
+      paddingTop: '25vh'
     }
   },
   text: {
@@ -189,7 +195,7 @@ export class Home extends Component {
                   Welcome to AdTractor
                 </Grid>
                 <Grid
-                  continaer
+                  container
                   item
                   direction="row"
                   className={classes.secondaryText}
@@ -211,7 +217,7 @@ export class Home extends Component {
                 </Grid>
                 <Grid container item direction="row" className={classes.text}>
                   <Grid item xs={5} className={classes.text}>
-                    <Typography paragraph="true" variant="subtitle1">
+                    <Typography paragraph="true" variant="subtitle2">
                       Are you looking for a secure advertising network? Look no
                       further, AdTractor prevents fraud by utilizing security
                       features provided by the Ethereum blockchain. Our
@@ -269,7 +275,7 @@ export class Home extends Component {
                 </Grid>
                 <Grid container item direction="row" className={classes.text}>
                   <Grid item xs={5} className={classes.text}>
-                    <Typography paragraph="true" variant="subtitle1">
+                    <Typography paragraph="true" variant="subtitle2">
                       Are you still using and developping web2? Sadly, it will
                       become the past tense soon. Why? Web 2.0 is a writable and
                       more social oriented World Wide Web that uses Google as a
@@ -319,7 +325,7 @@ export class Home extends Component {
                 </Grid>
                 <Grid container item direction="row" className={classes.text}>
                   <Grid item xs={5} className={classes.text}>
-                    <Typography paragraph="true" variant="subtitle1">
+                    <Typography paragraph="true" variant="subtitle2">
                       MetaMask is a bridge that allows you to visit the
                       distributed web of tomorrow in your browser today. It
                       allows you to run Ethereum dApps right in your browser
@@ -375,7 +381,7 @@ export class Home extends Component {
                 </Grid>
                 <Grid container item direction="row" className={classes.text}>
                   <Grid item xs={5} className={classes.text}>
-                    <Typography paragraph="true" variant="subtitle1">
+                    <Typography paragraph="true" variant="subtitle2">
                       Ethereum is an open-source, public, blockchain-based
                       distributed computing platform and operating system
                       featuring smart contract functionality. It supports a
