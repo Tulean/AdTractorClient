@@ -14,7 +14,8 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const styles = theme => ({
   root: {
-    position: 'relative'
+    position: 'relative',
+    padding: '0 !important'
   },
   silde: {
     color: '#fff'
@@ -24,7 +25,6 @@ const styles = theme => ({
       'linear-gradient(to right, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.8) 40%, rgba(0, 0, 0, 0.4)), url("/pictures/homepage.jpg")',
     width: '100%',
     backgroundSize: 'cover',
-    overflow: 'hidden',
     [theme.breakpoints.up('xs')]: {
       height: 'calc(100vh - 65px - 48px)'
     },
@@ -37,7 +37,6 @@ const styles = theme => ({
       'linear-gradient(to right, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.8) 40%, rgba(0, 0, 0, 0.4)), url("/pictures/ethereum.jpg")',
     width: '100%',
     backgroundSize: 'cover',
-    overflow: 'hidden',
     [theme.breakpoints.up('xs')]: {
       height: 'calc(100vh - 65px - 48px)'
     },
@@ -50,7 +49,6 @@ const styles = theme => ({
       'linear-gradient(to right, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.8) 40%, rgba(0, 0, 0, 0.4)), url("/pictures/metamask.jpg")',
     width: '100%',
     backgroundSize: 'cover',
-    overflow: 'hidden',
     [theme.breakpoints.up('xs')]: {
       height: 'calc(100vh - 65px - 48px)'
     },
@@ -63,7 +61,6 @@ const styles = theme => ({
       'linear-gradient(to right, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.8) 40%, rgba(0, 0, 0, 0.4)), url("/pictures/dAPP.jpg")',
     width: '100%',
     backgroundSize: 'cover',
-    overflow: 'hidden',
     [theme.breakpoints.up('xs')]: {
       height: 'calc(100vh - 65px - 48px)'
     },
@@ -72,10 +69,10 @@ const styles = theme => ({
     }
   },
   textHome: {
-    color: 'black',
-    height: '100vh'
+    color: 'black'
   },
   title: {
+    padding: 'none',
     [theme.breakpoints.up('xs')]: {
       fontSize: '5vw',
       paddingLeft: '2vw',
@@ -84,7 +81,7 @@ const styles = theme => ({
     [theme.breakpoints.down('xs')]: {
       display: 'flex',
       justifyContent: 'center',
-      fontSize: '10vw'
+      fontSize: '10vh'
     }
   },
   text: {
@@ -177,10 +174,10 @@ export class Home extends Component {
         <AutoPlaySwipeableViews
           index={index}
           onChangeIndex={this.handleChangeIndex}
-          interval={8000}
+          interval={80000}
         >
           <div className={classes.slide1}>
-            <Grid container spacing={24}>
+            <Grid container spacing={0}>
               <Grid
                 className={classes.textHome}
                 container
@@ -197,7 +194,7 @@ export class Home extends Component {
                   direction="row"
                   className={classes.secondaryText}
                 >
-                  <Grid container item direction="row" spacing={24}>
+                  <Grid container item direction="row" spacing={0}>
                     <Grid item xs={12} className={classes.secondaryText}>
                       A Decentralized Advertising Network
                     </Grid>
@@ -245,7 +242,7 @@ export class Home extends Component {
             </Modal>
           </div>
           <div className={classes.slide2}>
-            <Grid container spacing={24}>
+            <Grid container spacing={0}>
               <Grid
                 className={classes.textHome}
                 container
@@ -295,7 +292,7 @@ export class Home extends Component {
             </Grid>
           </div>
           <div className={classes.slide3}>
-            <Grid container spacing={24}>
+            <Grid container spacing={0}>
               <Grid
                 className={classes.textHome}
                 container
@@ -351,7 +348,7 @@ export class Home extends Component {
             </Modal>
           </div>
           <div className={classes.slide4}>
-            <Grid container spacing={24}>
+            <Grid container spacing={0}>
               <Grid
                 className={classes.textHome}
                 container
