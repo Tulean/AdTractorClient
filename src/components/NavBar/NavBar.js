@@ -154,7 +154,7 @@ export class NavBar extends Component {
               ADTRACTOR
             </Typography>
             <div className={classes.grow} />
-            <NavBarDrawer />
+            <NavBarDrawer accountLength={this.state.accounts.length} />
             <div className={classes.tapsContainer}>
               <Typography
                 className={classes.navTabs}

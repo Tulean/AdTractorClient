@@ -41,17 +41,10 @@ class NavBarDrawer extends Component {
     });
   };
 
-  render() {
-    const { classes } = this.props;
-    const sideList = (
-      <div className={classes.list}>
-        <List>
-          <ListItem button key={'Home'} component={Link} to="/">
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText primary={'Home'} />
-          </ListItem>
+  isLoggedIn = () => {
+    if (window.web3 && this.props.accountLength > 0) {
+      return (
+        <React.Fragment>
           <ListItem button key={'Listings'} component={Link} to="/listing">
             <ListItemIcon>
               <ListIcon />
@@ -64,6 +57,23 @@ class NavBarDrawer extends Component {
             </ListItemIcon>
             <ListItemText primary={'Create AdTract'} />
           </ListItem>
+        </React.Fragment>
+      );
+    }
+  };
+
+  render() {
+    const { classes } = this.props;
+    const sideList = (
+      <div className={classes.list}>
+        <List>
+          <ListItem button key={'Home'} component={Link} to="/">
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary={'Home'} />
+          </ListItem>
+          {this.isLoggedIn()}
         </List>
         <Divider />
         <ListItem button key={'AboutUs'} component={Link} to="/aboutus">
