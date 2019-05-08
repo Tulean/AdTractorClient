@@ -72,22 +72,19 @@ const styles = theme => ({
     color: 'black'
   },
   title: {
-    padding: 'none',
+    paddingTop: '25vh',
     [theme.breakpoints.up('sm')]: {
       fontSize: '5vw',
-      paddingLeft: '2vw',
-      paddingTop: '25vh'
+      paddingLeft: '2vw'
     },
     [theme.breakpoints.only('sm')]: {
       fontSize: '5vw',
-      paddingLeft: '2vw',
-      paddingTop: '3vh'
+      paddingLeft: '2vw'
     },
     [theme.breakpoints.down('xs')]: {
       display: 'flex',
       justifyContent: 'center',
-      fontSize: '10vw',
-      paddingTop: '25vh'
+      fontSize: '10vw'
     }
   },
   text: {

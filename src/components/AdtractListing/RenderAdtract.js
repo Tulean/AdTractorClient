@@ -115,7 +115,7 @@ const styles = theme => ({
     transform: 'scale(0.8)'
   },
   title: {
-    fontSize: '1.5vw'
+    fontSize: '1.8vw'
   },
   pos: {
     marginBottom: 12

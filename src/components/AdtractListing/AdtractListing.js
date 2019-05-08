@@ -105,19 +105,21 @@ const styles = theme => ({
     }
   },
   gridList: {
-    [theme.breakpoints.up('xs')]: {
-      height: 'calc(100vh - 65px - 8vh)'
+    [theme.breakpoints.up('sm')]: {
+      height: 'calc(100vh - 65px - 8vh)',
+      padding: '5vh 10vh'
+    },
+    [theme.breakpoints.only('sm')]: {
+      height: '60vh',
+      paddingBottom: '10vh'
     },
     [theme.breakpoints.down('xs')]: {
-      height: 'calc(100vh - 60px - 8vh)'
+      height: 'calc(100vh - 60px - 8vh)',
+      padding: '4vh 1vh'
     },
     height: '40vh',
-    width: '100%',
     display: 'flex',
     flexDirection: 'column'
-  },
-  gridListWrapper: {
-    height: '400px'
   },
   tile: {
     display: 'flex',
