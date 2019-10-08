@@ -24,7 +24,7 @@ Users need to have a web3 enabled internet browser.
 	Other ways to access AdTractor: https://adtractor.netlify.com/
 	
 	To unlock features, login into Metamask and make sure Metamask is on the Ropsten Test Network. In addition, make sure
-	to whitelist https://adtractor.netlify.com/ (click setting -> connection -> put https://adtractor.netlify.com/ into the input           box and then click on connect button).
+	to whitelist https://adtractor.netlify.com/ (click setting -> connection -> put https://adtractor.netlify.com/ into the input box and then click on connect button).
 
 ## AdTractor (Smart Contract)
 	GitHub Repository (Source Code): https://github.com/camtaylor/AdTractor
