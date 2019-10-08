@@ -12,7 +12,7 @@ It is possible because AdTractor utilizes the features that smart contracts prov
 
 Users need to have a web3 enabled internet browser.
 
-## AdTractor (Client)
+## AdTractor (Client): https://adtractor.netlify.com/
 	GitHub Repository (Source Code): https://github.com/Tulean/AdTractorClient
 	Installation process
 		1/ Clone the project from the GitHub repository
@@ -42,5 +42,5 @@ Users need to have a web3 enabled internet browser.
 		4/ open browser window to localhost:<specified port>
 	Other ways to access SpartanFest: spartanfest.herokuapp.com
 
-## Project Demo Link: https://www.youtube.com/watch?v=FXVNtPRYUs0&t=15s
+## Project Demo Video Link: https://www.youtube.com/watch?v=FXVNtPRYUs0&t=15s
 
