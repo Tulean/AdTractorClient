@@ -21,7 +21,10 @@ Users need to have a web3 enabled internet browser.
 		3/ Access the project directory and install all dependencies using: "npm install"
 		4/ Have a web3 enabled browser
 		5/ To run project: "npm start"
-	Other ways to access AdTractor: adtractor.herokuapp.com
+	Other ways to access AdTractor: https://adtractor.netlify.com/
+	
+	To unlock features, login into Metamask and make sure Metamask is on the Ropsten Test Network. In addition, make sure
+	to whitelist https://adtractor.netlify.com/ (click setting -> connection -> put https://adtractor.netlify.com/ into the input           box and then click on connect button).
 
 ## AdTractor (Smart Contract)
 	GitHub Repository (Source Code): https://github.com/camtaylor/AdTractor
